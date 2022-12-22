@@ -5,11 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
-import com.example.cob.api.PlayerApi
 import com.example.cob.databinding.FragmentLoginBinding
-import com.example.cob.utils.toListOfPlayers
-import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -35,20 +31,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonFirst.setOnClickListener() {
-            val nameUser = binding.editText.text.toString()
-
-            lifecycleScope.launch {
-
-                val listName: List<String> = PlayerApi.service.getAll().toListOfPlayers().map {
-                    t -> t.name
-                }
-
-                if(listName.indexOf(nameUser) != -1) {
-
-                }else {
-                   binding.editText.text.clear()
-                }
-            }
 
         }
     }
