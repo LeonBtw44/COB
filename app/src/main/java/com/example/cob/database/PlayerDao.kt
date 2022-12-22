@@ -12,7 +12,7 @@ interface PlayerDao {
     suspend fun insert(player: Player)
 
     @Insert
-    suspend fun insertAll(trips: List<Player>)
+    suspend fun insertAll(player: List<Player>)
 
     @Query("SELECT * FROM Player WHERE id = :id")
     suspend fun get(id: Long): Player
@@ -21,17 +21,17 @@ interface PlayerDao {
     fun getAll(): LiveData<List<Player>>
 
     @Update
-    suspend fun update(trip: Player)
+    suspend fun update(player: Player)
 
     @Delete
-    suspend fun delete(trip: Player)
+    suspend fun delete(player: Player)
 
     @Query("DELETE FROM Player")
     suspend fun clear()
 
     @Transaction
-    suspend fun replace(trips: List<Player>) {
+    suspend fun replace(player: List<Player>) {
         clear()
-        insertAll(trips)
+        insertAll(player)
     }
 }

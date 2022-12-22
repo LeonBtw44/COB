@@ -1,41 +1,44 @@
 package com.example.cob
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.cob.databinding.FragmentLoginBinding
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.cob.databinding.FragmentFirstBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class LoginFragment : Fragment() {
+class FirstFragment : Fragment() {
 
-    private var _binding: FragmentLoginBinding? = null
-    private lateinit var  intent: Intent
+    private var _binding: FragmentFirstBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var viewModel: PlayersListViewModel
+
+    private val adapter = ListPlayerAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        intent = Intent(context, MainActivity::class.java)
-
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this).get(PlayersListViewModel::class.java)
+        _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonFirst.setOnClickListener() {
-             startActivity(intent)
+        binding.rvPlayer.adapter = adapter
+        viewModel.players?.observe(viewLifecycleOwner){
+            adapter.submitList(it)
         }
     }
 
