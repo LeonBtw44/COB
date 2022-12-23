@@ -11,11 +11,12 @@ import com.example.democlashofbattle.utils.loadImage
 
 class PlayerViewHolder private constructor(val binding: ViewPlayersListBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: Player){
+    fun bind(clickListener: (Player) -> Unit, item: Player){
         loadImage(binding.avatar, item.imageUrl)
         binding.name.text = item.name
         binding.job.text = itemView.context.getString(getPlayerJob(item).getNameId())
 
+        binding.root.setOnClickListener { clickListener(item) }
     }
 
     companion object{
