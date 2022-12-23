@@ -3,6 +3,7 @@ package com.example.cob.database
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.cob.models.Player
+import com.example.cob.models.User
 
 
 @Dao
@@ -10,6 +11,12 @@ interface PlayerDao {
 
     @Insert
     suspend fun insert(player: Player)
+
+    @Insert
+    suspend fun insert(user: User)
+
+    @Query("SELECT * FROM User")
+    suspend fun get(): List<User>
 
     @Insert
     suspend fun insertAll(player: List<Player>)

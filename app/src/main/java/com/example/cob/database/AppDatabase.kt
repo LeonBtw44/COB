@@ -7,11 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.cob.api.PlayerApi
 import com.example.cob.models.Player
+import com.example.cob.models.User
 import com.example.cob.utils.toListOfPlayers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(Player::class), version = 1)
+@Database(entities = arrayOf(Player::class, User::class), version = 1)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun playerDao(): PlayerDao
 
@@ -32,6 +33,7 @@ abstract class AppDatabase: RoomDatabase() {
                         val dao = this@Companion.INSTANCE?.playerDao()
 
                         GlobalScope.launch {
+
                            dao?.insertAll(api.getAll().toListOfPlayers())
                         }
                     }
