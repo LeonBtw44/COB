@@ -1,6 +1,7 @@
 package com.example.cob.utils
 
 import android.content.Context
+import android.content.res.Resources
 import androidx.core.content.res.ResourcesCompat
 import com.example.cob.R
 import com.example.cob.models.CapabilityType

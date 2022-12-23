@@ -15,10 +15,13 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityLoginBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         binding = ActivityLoginBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
