@@ -16,7 +16,7 @@ interface PlayerDao {
     suspend fun insert(user: User)
 
     @Query("SELECT * FROM User")
-    suspend fun get(): List<User>
+    suspend fun get(): User
 
     @Insert
     suspend fun insertAll(player: List<Player>)

@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
         lifecycleScope.launch {
 
             val userConect = AppDatabase.INSTANCE?.playerDao()?.get()
-            if( userConect?.size!! > 0)
+            if( userConect != null)
                 startActivity(intent)
         }
 

@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.cob.database.AppDatabase
 import com.example.cob.databinding.FragmentFirstBinding
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -38,7 +40,12 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = ListPlayerAdapter{
-            Log.v("CLICK_CARD", it.toString())
+            lifecycleScope.launch {
+                if(it.name == AppDatabase.INSTANCE?.playerDao()?.get()?.name)
+                    Log.v("CLICK_CARD", "On lance le changement")
+                else
+                    Log.v("CLICK_CARD", "On lance le combat")
+            }
         }
 
         binding.rvPlayer.adapter = adapter
