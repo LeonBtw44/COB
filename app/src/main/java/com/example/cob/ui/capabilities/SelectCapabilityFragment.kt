@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.cob.databinding.FragmentSelectCapabilityBinding
+import com.example.cob.models.Capability
 
-/*class SelectCapabilityFragment : Fragment() {
+class SelectCapabilityFragment : Fragment() {
 
     companion object {
         const val SELECTED_CAPABILITY_EXTRA = "SELECTED_CAPABILITY_EXTRA"
@@ -50,4 +52,4 @@ import android.view.ViewGroup
         super.onDestroy()
         binding = null
     }
-}*/
+}

@@ -2,13 +2,15 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph2"
-    app:startDestination="@id/FirstFragment">
+    android:id="@+id/nav_graph3"
+    app:startDestination="@id/SelectCapabilityFragment"
+    >
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.cob.FirstFragment"
+        android:id="@+id/SelectCapabilityFragment"
+        android:name="com.example.cob.ui.capabilities.SelectCapabilityFragment"
         android:label="@string/login_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/activity_select_capability">
     </fragment>
+
 </navigation>

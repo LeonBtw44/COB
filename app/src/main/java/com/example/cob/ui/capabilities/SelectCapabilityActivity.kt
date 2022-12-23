@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.cob.R
 import com.example.cob.models.Capability
 
-/*class SelectCapabilityActivity : AppCompatActivity() {
+class SelectCapabilityActivity : AppCompatActivity() {
 
     companion object {
         fun newIntent(context: Context, index: Int) =
@@ -26,10 +26,10 @@ import com.example.cob.models.Capability
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_capability)
 
-        if (savedInstanceState == null) {
+        /*if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, SelectCapabilityFragment())
                 .commitNow()
-        }
+        }*/
     }
-}*/
+}
