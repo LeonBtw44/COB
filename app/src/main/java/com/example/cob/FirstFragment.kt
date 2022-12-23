@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.cob.database.AppDatabase
 import com.example.cob.databinding.FragmentFirstBinding
+import com.example.cob.models.User
 import kotlinx.coroutines.launch
 
 /**
@@ -27,6 +28,8 @@ class FirstFragment : Fragment() {
 
     private lateinit var adapter: ListPlayerAdapter
 
+    private val database = AppDatabase.INSTANCE?.playerDao()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,7 +44,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = ListPlayerAdapter{
             lifecycleScope.launch {
-                if(it.name == AppDatabase.INSTANCE?.playerDao()?.get()?.name)
+                if(it.name == database?.get()?.name)
                     Log.v("CLICK_CARD", "On lance le changement")
                 else
                     Log.v("CLICK_CARD", "On lance le combat")
@@ -52,6 +55,19 @@ class FirstFragment : Fragment() {
         viewModel.players?.observe(viewLifecycleOwner){
             adapter.submitList(it)
         }
+
+        binding.logout.setOnClickListener {
+            lifecycleScope.launch {
+                val user: User? = database?.get()
+                if(user != null){
+                    database?.delete(user)
+                    activity?.finish()
+                }
+            }
+
+        }
+
+        viewModel.getAll()
     }
 
     override fun onDestroyView() {

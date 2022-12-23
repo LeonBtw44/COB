@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/LoginFragment"
         android:name="com.example.cob.LoginFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/login_label"
         tools:layout="@layout/fragment_login"/>
 </navigation>
