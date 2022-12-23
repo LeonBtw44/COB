@@ -26,10 +26,10 @@ class SelectCapabilityActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_capability)
 
-        /*if (savedInstanceState == null) {
+        if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, SelectCapabilityFragment())
+                .replace(android.R.id.content, SelectCapabilityFragment())
                 .commitNow()
-        }*/
+        }
     }
 }
