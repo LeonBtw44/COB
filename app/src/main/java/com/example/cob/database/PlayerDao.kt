@@ -27,6 +27,9 @@ interface PlayerDao {
     @Query("SELECT * FROM Player WHERE id = :id")
     suspend fun get(id: Long): Player
 
+    @Query("SELECT * FROM Player WHERE name = :name")
+    suspend fun get(name: String): Player
+
     @Query("SELECT * FROM Player")
     fun getAll(): LiveData<List<Player>>
 

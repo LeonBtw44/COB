@@ -45,7 +45,7 @@ class FirstFragment : Fragment() {
         adapter = ListPlayerAdapter{
             lifecycleScope.launch {
                 if(it.name == database?.get()?.name)
-                    Log.v("CLICK_CARD", "On lance le changement")
+                     findNavController().navigate(R.id.action_FirstFragment_to_secondFragment)
                 else
                     Log.v("CLICK_CARD", "On lance le combat")
             }
